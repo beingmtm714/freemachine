@@ -54,6 +54,24 @@
   max-width: 440px;
 }
 
+.heroCta {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--acid);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.heroCta:hover {
+  color: var(--acid);
+}
+
 .heroRight {
   display: flex;
   align-items: center;

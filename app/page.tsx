@@ -22,6 +22,14 @@ export default function Home() {
             actors who sell us a vision designed to benefit their shareholders.
             Free Machine was built to change that.
           </p>
+          <a
+            href="https://www.nytimes.com/2019/11/10/opinion/artificial-intelligence-facebook-google.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.heroCta}
+          >
+            Before the AI boom: our 2019 op-ed in the Times
+          </a>
         </div>
         <div className={styles.heroRight}>
           <NodeDiagram />
