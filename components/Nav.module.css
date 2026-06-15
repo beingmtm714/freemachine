@@ -21,18 +21,39 @@
 
 .logo {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
   text-decoration: none;
+  color: var(--ink);
 }
 
-.logoImg {
-  height: 58px;
+.logoIcon {
+  height: 55px;
   width: auto;
+  flex-shrink: 0;
   transition: height 0.35s ease;
 }
 
-.nav.scrolled .logoImg {
-  height: 28px;
+/* Two-line stacked wordmark — font sized so two lines naturally fill the icon height */
+.logoText {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: font-size 0.35s ease;
+}
+
+.nav.scrolled .logoIcon {
+  height: 32px;
+}
+
+.nav.scrolled .logoText {
+  font-size: 15px;
 }
 
 .links {
@@ -73,21 +94,26 @@
 
 @media (max-width: 768px) {
   .nav {
-    padding: 1.25rem 1.5rem;
+    position: fixed;
+    padding: 1rem 1.5rem;
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom-color: var(--bg-3);
   }
 
-  .logoImg { height: 28px; }
+  .logoIcon { height: 38px; }
+
+  .logoText {
+    font-size: 18px;
+  }
 
   .toggle { display: flex; }
 
   .links {
     display: none;
     position: fixed;
-    top: 57px; left: 0; right: 0;
+    top: 72px; left: 0; right: 0;
     background: var(--bg);
     border-bottom: 1px solid var(--bg-3);
     flex-direction: column;

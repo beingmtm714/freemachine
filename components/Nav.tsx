@@ -26,11 +26,11 @@ export default function Nav() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <Link href="/" className={styles.logo}>
-        <img
-          src="/images/logo-transparent.png"
-          alt="Free Machine"
-          className={styles.logoImg}
-        />
+        <img src="/images/favicon-192.png" alt="" aria-hidden="true" className={styles.logoIcon} />
+        <span className={styles.logoText}>
+          <span>Free</span>
+          <span>Machine</span>
+        </span>
       </Link>
 
       <div className={`${styles.links} ${open ? styles.open : ''}`}>

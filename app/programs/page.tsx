@@ -46,7 +46,13 @@ export default function Programs() {
               jurisdictions.
             </p>
           </div>
-          <div className={styles.factStack}>
+          <div className={styles.detailRight}>
+            <img
+              src="/images/event-discussion.webp"
+              alt="Future Perfect participants in debate"
+              className={styles.detailPhoto}
+            />
+            <div className={styles.factStack}>
             {[
               { label: 'Format', value: 'Live, group game' },
               { label: 'Setting', value: 'Tomorrowland — an imagined society' },
@@ -59,6 +65,30 @@ export default function Programs() {
                 <div className={styles.factValue}>{value}</div>
               </div>
             ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Game screenshots */}
+      <section className={styles.screenshots}>
+        <div className={styles.screenshotsKicker}>In the game</div>
+        <div className={styles.screenshotsGrid}>
+          <div className={styles.screenshotItem}>
+            <img
+              src="/images/fp-slide.png"
+              alt="Future Perfect game slide — participants weigh AI policy options in 2018"
+              className={styles.screenshotImg}
+            />
+            <p className={styles.screenshotCaption}>A real predicament from the game: the year is 2018, and Tomorrowland must decide how to regulate A.I.</p>
+          </div>
+          <div className={styles.screenshotItem}>
+            <img
+              src="/images/fp-futures.jpg"
+              alt="The four possible futures: Eden, Rentism, Socialism, Elysium"
+              className={styles.screenshotImg}
+            />
+            <p className={styles.screenshotCaption}>The four futures participants could reach — mapped across axes of abundance, scarcity, equality, and hierarchy.</p>
           </div>
         </div>
       </section>

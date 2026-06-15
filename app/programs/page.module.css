@@ -72,6 +72,20 @@
   margin-bottom: 1.25rem;
 }
 
+.detailRight {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.detailPhoto {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 2px;
+}
+
 .factStack { border-top: 1px solid var(--bg-3); }
 
 .factRow {
@@ -96,6 +110,58 @@
   font-size: 0.9rem;
   color: var(--ink);
   line-height: 1.5;
+}
+
+/* Game screenshots */
+.screenshots {
+  padding: 6rem 3rem;
+  border-bottom: 1px solid var(--bg-3);
+  position: relative;
+  z-index: 1;
+}
+
+.screenshotsKicker {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.screenshotsKicker::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--acid);
+  flex-shrink: 0;
+}
+
+.screenshotsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.screenshotItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.screenshotImg {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+  border: 1px solid var(--bg-3);
+}
+
+.screenshotCaption {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--ink-dim);
 }
 
 /* Timeline — dark section */
@@ -205,6 +271,8 @@
   .hero { padding: 8rem 1.5rem 4rem; }
   .detail { padding: 5rem 1.5rem; }
   .detailGrid { grid-template-columns: 1fr; gap: 3rem; }
+  .screenshots { padding: 4rem 1.5rem; }
+  .screenshotsGrid { grid-template-columns: 1fr; }
   .timeline { padding: 5rem 1.5rem; }
   .tlStep { grid-template-columns: 70px 1fr; gap: 1rem; }
   .testimonial { padding: 4rem 1.5rem; }
