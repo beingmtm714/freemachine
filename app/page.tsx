@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ParticleCanvas from '@/components/ParticleCanvas'
@@ -35,6 +36,15 @@ export default function Home() {
           <NodeDiagram />
         </div>
       </section>
+
+      {/* Community photo */}
+      <div className={styles.photoStrip}>
+        <img
+          src="/images/event-presentation.webp"
+          alt="Free Machine community event — participants engaged in Future Perfect"
+          className={styles.photoStripImg}
+        />
+      </div>
 
       {/* Pillars */}
       <section className={styles.pillars}>
@@ -95,6 +105,9 @@ export default function Home() {
               </p>
               <div className={styles.quoteAttr}>— Emily, participant</div>
             </div>
+            <Link href="/programs" className={styles.programCta}>
+              See how it works ↗
+            </Link>
           </div>
           <div>
             <div className={styles.futuresGrid}>
@@ -180,22 +193,29 @@ export default function Home() {
       {/* About teaser */}
       <section className={styles.about}>
         <div className={styles.aboutInner}>
-          <h2 className={styles.aboutHeading}>
-            We created experiences that{' '}
-            <strong>challenged the public</strong> to collectively imagine
-            possible futures.
-          </h2>
-          <p className={styles.aboutBody}>
-            Free Machine was a non-profit organization that developed creative
-            programs to shape a high-tech future that is equitable, abundant,
-            and sustainable — an LA-based collective of artists, designers,
-            urban planners, and policy wonks.
-          </p>
-          <p className={styles.aboutBody}>
-            The relationship between policy and creative practice was paramount
-            to our approach: storytelling drives culture, and culture drives
-            policy. Our work lived at this nexus of tech, policy, and culture.
-          </p>
+          <div className={styles.aboutContent}>
+            <h2 className={styles.aboutHeading}>
+              We created experiences that{' '}
+              <strong>challenged the public</strong> to collectively imagine
+              possible futures.
+            </h2>
+            <p className={styles.aboutBody}>
+              Free Machine was a non-profit organization that developed creative
+              programs to shape a high-tech future that is equitable, abundant,
+              and sustainable — an LA-based collective of artists, designers,
+              urban planners, and policy wonks.
+            </p>
+            <p className={styles.aboutBody}>
+              The relationship between policy and creative practice was paramount
+              to our approach: storytelling drives culture, and culture drives
+              policy. Our work lived at this nexus of tech, policy, and culture.
+            </p>
+          </div>
+          <img
+            src="/images/event-room.jpg"
+            alt="Future Perfect participants at play"
+            className={styles.aboutPhoto}
+          />
         </div>
       </section>
 

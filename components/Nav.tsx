@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Nav.module.css'
 
 const links = [
@@ -14,11 +14,23 @@ const links = [
 export default function Nav() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <Link href="/" className={styles.logo}>
-        Free<span>Machine</span>
+        <img
+          src="/images/logo-transparent.png"
+          alt="Free Machine"
+          className={styles.logoImg}
+        />
       </Link>
 
       <div className={`${styles.links} ${open ? styles.open : ''}`}>
