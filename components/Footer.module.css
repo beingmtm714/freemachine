@@ -1,0 +1,46 @@
+.footer {
+  background: var(--ink);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--bg);
+  letter-spacing: 0.02em;
+}
+.logo span { color: var(--acid); }
+
+.links {
+  display: flex;
+  gap: 2rem;
+}
+.links a {
+  font-size: 0.75rem;
+  color: rgba(247, 246, 240, 0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.links a:hover { color: var(--bg); }
+
+.copy {
+  font-size: 0.7rem;
+  color: rgba(247, 246, 240, 0.3);
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+  }
+  .copy { text-align: left; }
+}

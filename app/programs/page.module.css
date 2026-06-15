@@ -1,0 +1,211 @@
+.hero {
+  padding: 10rem 3rem 5rem;
+  border-bottom: 1px solid var(--bg-3);
+  position: relative;
+  z-index: 1;
+}
+
+.kicker {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--acid);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.kicker::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--acid);
+  flex-shrink: 0;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.intro {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--ink-dim);
+  max-width: 560px;
+}
+
+.detail {
+  padding: 6rem 3rem;
+  border-bottom: 1px solid var(--bg-3);
+  position: relative;
+  z-index: 1;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.sectionHeading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.body {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--ink-dim);
+  margin-bottom: 1.25rem;
+}
+
+.factStack { border-top: 1px solid var(--bg-3); }
+
+.factRow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--bg-3);
+  align-items: baseline;
+}
+
+.factLabel {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.factValue {
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* Timeline — dark section */
+.timeline {
+  background: var(--ink);
+  padding: 6rem 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineInner { max-width: 1100px; margin: 0 auto; }
+
+.programKicker {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 2rem;
+}
+
+.programTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--bg);
+  margin-bottom: 4rem;
+}
+
+.timelineList { border-top: 1px solid rgba(247, 246, 240, 0.08); }
+
+.tlStep {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(247, 246, 240, 0.08);
+}
+
+.tlYear {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--acid);
+  padding-top: 0.2rem;
+}
+
+.tlTitle {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--bg);
+  margin-bottom: 0.5rem;
+}
+
+.tlBody {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(247, 246, 240, 0.5);
+}
+
+/* Testimonial */
+.testimonial {
+  padding: 6rem 3rem;
+  border-top: 1px solid var(--bg-3);
+  position: relative;
+  z-index: 1;
+}
+
+.testimonialInner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tMark {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--acid);
+  line-height: 1;
+  margin-bottom: -1rem;
+}
+
+.tQuote {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.tAttr {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 8rem 1.5rem 4rem; }
+  .detail { padding: 5rem 1.5rem; }
+  .detailGrid { grid-template-columns: 1fr; gap: 3rem; }
+  .timeline { padding: 5rem 1.5rem; }
+  .tlStep { grid-template-columns: 70px 1fr; gap: 1rem; }
+  .testimonial { padding: 4rem 1.5rem; }
+}

@@ -1,0 +1,319 @@
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 8rem 3rem 5rem;
+  position: relative;
+  z-index: 1;
+  gap: 4rem;
+}
+
+.heroLeft {}
+
+.kicker {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--acid);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.kicker::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--acid);
+  flex-shrink: 0;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 2.5rem;
+}
+.headline em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--node-a);
+}
+
+.heroBody {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ink-dim);
+  max-width: 440px;
+}
+
+.heroRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pillars */
+.pillars {
+  padding: 6rem 3rem;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--bg-3);
+}
+
+.pillarsHeading {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 4rem;
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.pillarCard {
+  background: var(--bg-2);
+  padding: 2.5rem;
+  transition: background 0.3s, transform 0.2s;
+}
+.pillarCard:hover {
+  background: var(--bg-3);
+  transform: translateY(-3px);
+}
+
+.pillarDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+.dotA { background: var(--node-a); }
+.dotB { background: var(--node-b); }
+.dotC { background: var(--node-c); }
+
+.pillarTitle {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+.pillarBody {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: var(--ink-dim);
+}
+
+/* Program / dark section */
+.program {
+  padding: 6rem 3rem;
+  position: relative;
+  z-index: 1;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.programInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.programKicker {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 2rem;
+}
+
+.programTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--bg);
+  margin-bottom: 2rem;
+}
+
+.programBody {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(247, 246, 240, 0.55);
+  margin-bottom: 1.5rem;
+}
+
+.programQuote {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  border: 1px solid rgba(247, 246, 240, 0.12);
+  border-radius: 4px;
+  background: rgba(247, 246, 240, 0.04);
+}
+
+.quoteText {
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(247, 246, 240, 0.7);
+  margin-bottom: 1rem;
+}
+
+.quoteAttr {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--acid);
+}
+
+.futuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.futureCell {
+  padding: 2rem;
+  background: rgba(247, 246, 240, 0.04);
+  border: 1px solid rgba(247, 246, 240, 0.06);
+  transition: background 0.25s;
+}
+.futureCell:hover { background: rgba(247, 246, 240, 0.08); }
+
+.futureYear {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--acid);
+  margin-bottom: 0.75rem;
+}
+
+.futureText {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: rgba(247, 246, 240, 0.5);
+}
+
+/* Press */
+.press {
+  padding: 5rem 3rem;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--bg-3);
+}
+
+.pressKicker {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 3rem;
+}
+
+.pressList { display: flex; flex-direction: column; }
+
+.pressRow {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--bg-3);
+  text-decoration: none;
+  color: inherit;
+  transition: padding-left 0.2s;
+}
+.pressRow:hover { padding-left: 0.75rem; }
+
+.pressSource {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+}
+
+.pressHeadline {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.pressArrow {
+  color: var(--ink-dim);
+  font-size: 1rem;
+  transition: transform 0.2s, color 0.2s;
+}
+.pressRow:hover .pressArrow {
+  transform: translate(3px, -3px);
+  color: var(--acid);
+}
+
+/* About teaser */
+.about {
+  padding: 6rem 3rem;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-2);
+  border-top: 1px solid var(--bg-3);
+}
+
+.aboutInner { max-width: 700px; }
+
+.aboutHeading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 2.5rem;
+}
+.aboutHeading strong { font-weight: 600; }
+
+.aboutBody {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--ink-dim);
+  margin-bottom: 1.25rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 7rem 1.5rem 4rem;
+  }
+  .heroRight { display: none; }
+  .pillars { padding: 5rem 1.5rem; }
+  .pillarsGrid { grid-template-columns: 1fr; }
+  .program { padding: 5rem 1.5rem; }
+  .programInner { grid-template-columns: 1fr; gap: 3rem; }
+  .futuresGrid { grid-template-columns: 1fr; }
+  .press { padding: 4rem 1.5rem; }
+  .pressRow { grid-template-columns: 1fr; gap: 0.5rem; }
+  .about { padding: 5rem 1.5rem; }
+}

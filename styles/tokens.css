@@ -1,0 +1,21 @@
+:root {
+  --bg:        #f7f6f0;
+  --bg-2:      #edece4;
+  --bg-3:      #e2e0d6;
+
+  --ink:       #1c1c1c;
+  --ink-soft:  #333333;
+  --ink-dim:   rgba(28, 28, 28, 0.40);
+
+  --acid:      #8fc700;
+  --acid-dim:  rgba(143, 199, 0, 0.20);
+
+  --node-a:    #5500cc;
+  --node-b:    #8fc700;
+  --node-c:    #1c1c1c;
+
+  --nav-bg:    rgba(247, 246, 240, 0.92);
+
+  --font-display: var(--font-unbounded), sans-serif;
+  --font-body:    var(--font-epilogue), sans-serif;
+}

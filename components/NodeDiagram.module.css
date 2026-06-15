@@ -1,0 +1,62 @@
+.wrap {
+  width: 100%;
+  max-width: 480px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edge {
+  stroke: rgba(28, 28, 28, 0.12);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 4 4;
+  animation: dash-flow 8s linear infinite;
+}
+
+.edgeActive {
+  stroke: var(--acid);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 3;
+  opacity: 0.6;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.labelSub {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 400;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.labelNeutral {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 400;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  fill: var(--ink-dim);
+}
+
+.labelCenter {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  fill: var(--acid);
+}
