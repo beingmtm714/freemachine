@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ParticleCanvas from '@/components/ParticleCanvas'
-import NodeDiagram from '@/components/NodeDiagram'
 import styles from './page.module.css'
 
 export default function Home() {
@@ -32,9 +31,7 @@ export default function Home() {
             Before the AI boom: our 2019 op-ed in the Times
           </a>
         </div>
-        <div className={styles.heroRight}>
-          <NodeDiagram />
-        </div>
+        <div className={styles.heroRight} />
       </section>
 
       {/* Community photo */}
