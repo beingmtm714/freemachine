@@ -20,6 +20,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Semi-opaque background on all sections so nodes ghost through without killing legibility.
+   Class-specific backgrounds (--ink, --bg-2, etc.) override this via higher specificity. */
+section {
+  background: rgba(247, 246, 240, 0.85);
+}
+
 @keyframes dash-flow {
   to { stroke-dashoffset: -48; }
 }
