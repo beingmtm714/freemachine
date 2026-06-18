@@ -12,9 +12,10 @@ export default function ParticleCanvas() {
     const ctx = canvas.getContext('2d')!
     let animFrame: number
     let W = 0, H = 0
+    let scrollY = 0
 
-    const NODE_COUNT = 60
-    const CONNECT_DIST = 90
+    const NODE_COUNT = 78
+    const CONNECT_DIST = 117
     const TRAIL_FILL = 'rgba(247,246,240,0.15)'
 
     type NodeColor = 'purple' | 'acid' | 'dark'
@@ -41,7 +42,7 @@ export default function ParticleCanvas() {
     }
 
     const NAMED: NamedNode[] = [
-      { label: 'Free Machine', sub: '', xFrac: 0.72, yFrac: 0.50, x: 0, y: 0, r: 44, fill: '#1c1c1c', textColor: '#8fc700' },
+      { label: 'Free Machine', sub: '',             xFrac: 0.72, yFrac: 0.50, x: 0, y: 0, r: 44, fill: '#1c1c1c', textColor: '#8fc700' },
       { label: 'Policy',       sub: 'Advocacy',     xFrac: 0.58, yFrac: 0.28, x: 0, y: 0, r: 36, fill: '#5500cc', textColor: 'white' },
       { label: 'Technology',   sub: 'Emerging',     xFrac: 0.86, yFrac: 0.28, x: 0, y: 0, r: 36, fill: '#1c1c1c', textColor: 'white' },
       { label: 'Culture',      sub: 'Storytelling', xFrac: 0.72, yFrac: 0.79, x: 0, y: 0, r: 36, fill: '#8fc700', textColor: 'white' },
@@ -94,15 +95,19 @@ export default function ParticleCanvas() {
       ctx.fillStyle = TRAIL_FILL
       ctx.fillRect(0, 0, W, H)
 
-      const showNamed = W >= 768
+      const desktopWidth = W >= 768
+      // Named nodes fade out over the first 40% of viewport height scrolled
+      const namedAlpha = desktopWidth
+        ? Math.max(0, 1 - scrollY / (H * 0.4))
+        : 0
 
       // Dashed edges between named nodes
-      if (showNamed) {
+      if (namedAlpha > 0) {
         ctx.setLineDash([4, 4])
         ctx.lineWidth = 0.75
         for (const [i, j] of NAMED_EDGES) {
           const a = NAMED[i], b = NAMED[j]
-          ctx.strokeStyle = 'rgba(28,28,28,0.08)'
+          ctx.strokeStyle = `rgba(28,28,28,${0.08 * namedAlpha})`
           ctx.beginPath()
           ctx.moveTo(a.x, a.y)
           ctx.lineTo(b.x, b.y)
@@ -138,14 +143,14 @@ export default function ParticleCanvas() {
           }
         }
 
-        // Particle-to-named-node connections
-        if (showNamed) {
+        // Particle-to-named-node connections (fade with named nodes)
+        if (namedAlpha > 0) {
           for (const n of NAMED) {
             const dist = Math.hypot(a.x - n.x, a.y - n.y)
             const reach = CONNECT_DIST * 2.0
             if (dist < reach) {
               const prox = 1 - dist / reach
-              ctx.strokeStyle = `rgba(28,28,28,${prox * 0.10})`
+              ctx.strokeStyle = `rgba(28,28,28,${prox * 0.10 * namedAlpha})`
               ctx.lineWidth = 0.4
               ctx.beginPath()
               ctx.moveTo(a.x, a.y)
@@ -179,8 +184,9 @@ export default function ParticleCanvas() {
         ctx.fill()
       }
 
-      // Named nodes drawn on top
-      if (showNamed) {
+      // Named nodes drawn on top, fading on scroll
+      if (namedAlpha > 0) {
+        ctx.globalAlpha = namedAlpha
         ctx.textAlign = 'center'
         ctx.textBaseline = 'middle'
 
@@ -199,15 +205,17 @@ export default function ParticleCanvas() {
           } else if (n.sub) {
             ctx.font = '500 10px Epilogue, sans-serif'
             ctx.fillText(n.label, n.x, n.y - 5)
-            ctx.globalAlpha = 0.7
+            ctx.globalAlpha = namedAlpha * 0.7
             ctx.font = '400 8px Epilogue, sans-serif'
             ctx.fillText(n.sub, n.x, n.y + 7)
-            ctx.globalAlpha = 1
+            ctx.globalAlpha = namedAlpha
           } else {
             ctx.font = '400 9px Epilogue, sans-serif'
             ctx.fillText(n.label, n.x, n.y)
           }
         }
+
+        ctx.globalAlpha = 1
       }
 
       animFrame = requestAnimationFrame(draw)
@@ -215,9 +223,11 @@ export default function ParticleCanvas() {
 
     const onMouseMove = (e: MouseEvent) => { mouse.x = e.clientX; mouse.y = e.clientY }
     const onMouseLeave = () => { mouse.x = -9999; mouse.y = -9999 }
+    const onScroll = () => { scrollY = window.scrollY }
 
     window.addEventListener('resize', resize)
     window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('scroll', onScroll, { passive: true })
     document.addEventListener('mouseleave', onMouseLeave)
     resize()
     draw()
@@ -226,6 +236,7 @@ export default function ParticleCanvas() {
       cancelAnimationFrame(animFrame)
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('scroll', onScroll)
       document.removeEventListener('mouseleave', onMouseLeave)
     }
   }, [])
