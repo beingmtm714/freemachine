@@ -107,7 +107,7 @@ export default function ParticleCanvas() {
         ctx.lineWidth = 0.75
         for (const [i, j] of NAMED_EDGES) {
           const a = NAMED[i], b = NAMED[j]
-          ctx.strokeStyle = `rgba(28,28,28,${0.08 * namedAlpha})`
+          ctx.strokeStyle = `rgba(28,28,28,${0.056 * namedAlpha})`
           ctx.beginPath()
           ctx.moveTo(a.x, a.y)
           ctx.lineTo(b.x, b.y)
@@ -133,7 +133,7 @@ export default function ParticleCanvas() {
           if (dist < CONNECT_DIST) {
             const prox = 1 - dist / CONNECT_DIST
             const hubBoost = (a.isHub && b.isHub) ? 0.04 : (a.isHub || b.isHub) ? 0.02 : 0
-            const alpha = Math.min(prox * (nearMouse ? 0.18 : 0.10) + hubBoost, 0.20)
+            const alpha = Math.min(prox * (nearMouse ? 0.126 : 0.07) + hubBoost, 0.14)
             ctx.strokeStyle = `rgba(${lineRgb(a, b)},${alpha})`
             ctx.lineWidth = (a.isHub || b.isHub) ? 0.85 : 0.5
             ctx.beginPath()
@@ -150,7 +150,7 @@ export default function ParticleCanvas() {
             const reach = CONNECT_DIST * 2.0
             if (dist < reach) {
               const prox = 1 - dist / reach
-              ctx.strokeStyle = `rgba(28,28,28,${prox * 0.10 * namedAlpha})`
+              ctx.strokeStyle = `rgba(28,28,28,${prox * 0.07 * namedAlpha})`
               ctx.lineWidth = 0.4
               ctx.beginPath()
               ctx.moveTo(a.x, a.y)
@@ -167,16 +167,16 @@ export default function ParticleCanvas() {
             const progress = a.pulseClock / 70
             ctx.beginPath()
             ctx.arc(a.x, a.y, a.r + progress * 52, 0, Math.PI * 2)
-            ctx.strokeStyle = `rgba(${rgb(a.color)},${(1 - progress) * 0.08})`
+            ctx.strokeStyle = `rgba(${rgb(a.color)},${(1 - progress) * 0.056})`
             ctx.lineWidth = 0.9
             ctx.stroke()
           }
         }
 
         const nodeAlpha = nearMouse
-          ? 0.92
-          : a.color === 'dark' ? (a.isHub ? 0.12 : 0.07)
-          : (a.isHub ? 0.15 : 0.10)
+          ? 0.64
+          : a.color === 'dark' ? (a.isHub ? 0.084 : 0.049)
+          : (a.isHub ? 0.105 : 0.07)
 
         ctx.beginPath()
         ctx.arc(a.x, a.y, nearMouse ? a.r * 1.45 : a.r, 0, Math.PI * 2)
