@@ -14,8 +14,8 @@ export default function ParticleCanvas() {
     let W = 0, H = 0
     let scrollY = 0
 
-    const NODE_COUNT = 78
-    const CONNECT_DIST = 117
+    const NODE_COUNT = 98
+    const CONNECT_DIST = 146
     const TRAIL_FILL = 'rgba(247,246,240,0.15)'
 
     type NodeColor = 'purple' | 'acid' | 'dark'
@@ -65,14 +65,26 @@ export default function ParticleCanvas() {
     }
 
     const initNodes = () => {
-      nodes = Array.from({ length: NODE_COUNT }, () => {
+      // Seed 2 particles near each named node so area stays populated after fade
+      const seededCount = W >= 768 ? NAMED.length * 2 : 0
+      nodes = Array.from({ length: NODE_COUNT }, (_, i) => {
         const isHub = Math.random() < 0.14
         const cr = Math.random()
         const color: NodeColor = cr < 0.28 ? 'purple' : cr < 0.44 ? 'acid' : 'dark'
         const r = isHub ? (Math.random() * 2.5 + 3.5) : (Math.random() * 1.2 + 0.8)
+        let x, y
+        if (i < seededCount) {
+          const n = NAMED[Math.floor(i / 2)]
+          const angle = Math.random() * Math.PI * 2
+          const dist = n.r + Math.random() * CONNECT_DIST * 0.6
+          x = Math.max(0, Math.min(W, n.x + Math.cos(angle) * dist))
+          y = Math.max(0, Math.min(H, n.y + Math.sin(angle) * dist))
+        } else {
+          x = Math.random() * W
+          y = Math.random() * H
+        }
         return {
-          x: Math.random() * W,
-          y: Math.random() * H,
+          x, y,
           vx: (Math.random() - 0.5) * 0.16,
           vy: (Math.random() - 0.5) * 0.16,
           r, color, isHub,
