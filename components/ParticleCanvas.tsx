@@ -14,7 +14,7 @@ export default function ParticleCanvas() {
     let W = 0, H = 0
     let scrollY = 0
 
-    const NODE_COUNT = 98
+    const NODE_COUNT = 130
     const CONNECT_DIST = 146
     const TRAIL_FILL = 'rgba(247,246,240,0.15)'
 
@@ -145,7 +145,7 @@ export default function ParticleCanvas() {
           if (dist < CONNECT_DIST) {
             const prox = 1 - dist / CONNECT_DIST
             const hubBoost = (a.isHub && b.isHub) ? 0.04 : (a.isHub || b.isHub) ? 0.02 : 0
-            const alpha = Math.min(prox * (nearMouse ? 0.126 : 0.07) + hubBoost, 0.14)
+            const alpha = Math.min(prox * (nearMouse ? 0.22 : 0.14) + hubBoost, 0.28)
             ctx.strokeStyle = `rgba(${lineRgb(a, b)},${alpha})`
             ctx.lineWidth = (a.isHub || b.isHub) ? 0.85 : 0.5
             ctx.beginPath()
@@ -186,9 +186,9 @@ export default function ParticleCanvas() {
         }
 
         const nodeAlpha = nearMouse
-          ? 0.64
-          : a.color === 'dark' ? (a.isHub ? 0.084 : 0.049)
-          : (a.isHub ? 0.105 : 0.07)
+          ? 0.85
+          : a.color === 'dark' ? (a.isHub ? 0.18 : 0.11)
+          : (a.isHub ? 0.22 : 0.15)
 
         ctx.beginPath()
         ctx.arc(a.x, a.y, nearMouse ? a.r * 1.45 : a.r, 0, Math.PI * 2)
@@ -196,39 +196,7 @@ export default function ParticleCanvas() {
         ctx.fill()
       }
 
-      // Named nodes drawn on top, fading on scroll
-      if (namedAlpha > 0) {
-        ctx.globalAlpha = namedAlpha
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'middle'
-
-        for (const n of NAMED) {
-          ctx.beginPath()
-          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2)
-          ctx.fillStyle = n.fill
-          ctx.fill()
-
-          ctx.fillStyle = n.textColor
-
-          if (n.label === 'Free Machine') {
-            ctx.font = '500 11px Epilogue, sans-serif'
-            ctx.fillText('Free', n.x, n.y - 6)
-            ctx.fillText('Machine', n.x, n.y + 8)
-          } else if (n.sub) {
-            ctx.font = '500 10px Epilogue, sans-serif'
-            ctx.fillText(n.label, n.x, n.y - 5)
-            ctx.globalAlpha = namedAlpha * 0.7
-            ctx.font = '400 8px Epilogue, sans-serif'
-            ctx.fillText(n.sub, n.x, n.y + 7)
-            ctx.globalAlpha = namedAlpha
-          } else {
-            ctx.font = '400 9px Epilogue, sans-serif'
-            ctx.fillText(n.label, n.x, n.y)
-          }
-        }
-
-        ctx.globalAlpha = 1
-      }
+      // Named circles are rendered as DOM elements (NamedNodes) above the canvas
 
       animFrame = requestAnimationFrame(draw)
     }

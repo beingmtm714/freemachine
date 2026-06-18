@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ParticleCanvas from '@/components/ParticleCanvas'
+import NamedNodes from '@/components/NamedNodes'
 import styles from './page.module.css'
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     <>
       <Nav />
       <ParticleCanvas />
+      <NamedNodes />
 
       {/* Hero */}
       <section className={styles.hero}>
