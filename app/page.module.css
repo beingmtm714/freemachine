@@ -104,7 +104,7 @@
 }
 
 .pillarCard {
-  background: rgba(247, 246, 240, 0.72);
+  background: rgba(247, 246, 240, 0.80);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(226, 224, 214, 0.6);
@@ -284,7 +284,7 @@
   padding: 1.75rem 1.5rem;
   margin: 0 -1.5rem;
   border-radius: 4px;
-  background: rgba(247, 246, 240, 0.72);
+  background: rgba(247, 246, 240, 0.80);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-bottom: 1px solid rgba(226, 224, 214, 0.6);
