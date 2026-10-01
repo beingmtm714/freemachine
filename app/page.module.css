@@ -8,7 +8,7 @@
   position: relative;
   z-index: 1;
   gap: 4rem;
-  background: linear-gradient(95deg, rgba(247,246,240,0.97) 42%, rgba(247,246,240,0.62) 62%, rgba(247,246,240,0.18) 85%);
+  background: linear-gradient(95deg, rgba(247,246,240,0.95) 40%, rgba(247,246,240,0.55) 60%, rgba(247,246,240,0.10) 82%);
 }
 
 .heroLeft {}

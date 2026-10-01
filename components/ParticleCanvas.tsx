@@ -14,9 +14,9 @@ export default function ParticleCanvas() {
     let W = 0, H = 0
     let scrollY = 0
 
-    const NODE_COUNT = 80
+    const NODE_COUNT = 105
     const CONNECT_DIST = 146
-    const TRAIL_FILL = 'rgba(247,246,240,0.30)'
+    const TRAIL_FILL = 'rgba(247,246,240,0.18)'
 
     type NodeColor = 'purple' | 'acid' | 'dark'
     type Node = {
@@ -144,8 +144,8 @@ export default function ParticleCanvas() {
           const dist = Math.hypot(a.x - b.x, a.y - b.y)
           if (dist < CONNECT_DIST) {
             const prox = 1 - dist / CONNECT_DIST
-            const hubBoost = (a.isHub && b.isHub) ? 0.02 : (a.isHub || b.isHub) ? 0.01 : 0
-            const alpha = Math.min(prox * (nearMouse ? 0.12 : 0.07) + hubBoost, 0.14)
+            const hubBoost = (a.isHub && b.isHub) ? 0.03 : (a.isHub || b.isHub) ? 0.015 : 0
+            const alpha = Math.min(prox * (nearMouse ? 0.18 : 0.11) + hubBoost, 0.22)
             ctx.strokeStyle = `rgba(${lineRgb(a, b)},${alpha})`
             ctx.lineWidth = (a.isHub || b.isHub) ? 0.85 : 0.5
             ctx.beginPath()
@@ -162,7 +162,7 @@ export default function ParticleCanvas() {
             const reach = CONNECT_DIST * 2.0
             if (dist < reach) {
               const prox = 1 - dist / reach
-              ctx.strokeStyle = `rgba(28,28,28,${prox * 0.045 * namedAlpha})`
+              ctx.strokeStyle = `rgba(28,28,28,${prox * 0.06 * namedAlpha})`
               ctx.lineWidth = 0.4
               ctx.beginPath()
               ctx.moveTo(a.x, a.y)
@@ -179,19 +179,19 @@ export default function ParticleCanvas() {
             const progress = a.pulseClock / 70
             ctx.beginPath()
             ctx.arc(a.x, a.y, a.r + progress * 52, 0, Math.PI * 2)
-            ctx.strokeStyle = `rgba(${rgb(a.color)},${(1 - progress) * 0.04})`
+            ctx.strokeStyle = `rgba(${rgb(a.color)},${(1 - progress) * 0.05})`
             ctx.lineWidth = 0.9
             ctx.stroke()
           }
         }
 
         const nodeAlpha = nearMouse
-          ? 0.5
-          : a.color === 'dark' ? (a.isHub ? 0.14 : 0.08)
-          : (a.isHub ? 0.17 : 0.11)
+          ? 0.7
+          : a.color === 'dark' ? (a.isHub ? 0.2 : 0.13)
+          : (a.isHub ? 0.26 : 0.18)
 
         ctx.beginPath()
-        ctx.arc(a.x, a.y, nearMouse ? a.r * 1.25 : a.r, 0, Math.PI * 2)
+        ctx.arc(a.x, a.y, nearMouse ? a.r * 1.35 : a.r, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(${nearMouse ? '143,199,0' : rgb(a.color)},${nodeAlpha})`
         ctx.fill()
       }
