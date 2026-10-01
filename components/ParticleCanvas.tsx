@@ -14,9 +14,9 @@ export default function ParticleCanvas() {
     let W = 0, H = 0
     let scrollY = 0
 
-    const NODE_COUNT = 130
+    const NODE_COUNT = 80
     const CONNECT_DIST = 146
-    const TRAIL_FILL = 'rgba(247,246,240,0.15)'
+    const TRAIL_FILL = 'rgba(247,246,240,0.30)'
 
     type NodeColor = 'purple' | 'acid' | 'dark'
     type Node = {
@@ -144,8 +144,8 @@ export default function ParticleCanvas() {
           const dist = Math.hypot(a.x - b.x, a.y - b.y)
           if (dist < CONNECT_DIST) {
             const prox = 1 - dist / CONNECT_DIST
-            const hubBoost = (a.isHub && b.isHub) ? 0.04 : (a.isHub || b.isHub) ? 0.02 : 0
-            const alpha = Math.min(prox * (nearMouse ? 0.22 : 0.14) + hubBoost, 0.28)
+            const hubBoost = (a.isHub && b.isHub) ? 0.02 : (a.isHub || b.isHub) ? 0.01 : 0
+            const alpha = Math.min(prox * (nearMouse ? 0.12 : 0.07) + hubBoost, 0.14)
             ctx.strokeStyle = `rgba(${lineRgb(a, b)},${alpha})`
             ctx.lineWidth = (a.isHub || b.isHub) ? 0.85 : 0.5
             ctx.beginPath()
@@ -162,7 +162,7 @@ export default function ParticleCanvas() {
             const reach = CONNECT_DIST * 2.0
             if (dist < reach) {
               const prox = 1 - dist / reach
-              ctx.strokeStyle = `rgba(28,28,28,${prox * 0.07 * namedAlpha})`
+              ctx.strokeStyle = `rgba(28,28,28,${prox * 0.045 * namedAlpha})`
               ctx.lineWidth = 0.4
               ctx.beginPath()
               ctx.moveTo(a.x, a.y)
@@ -179,19 +179,19 @@ export default function ParticleCanvas() {
             const progress = a.pulseClock / 70
             ctx.beginPath()
             ctx.arc(a.x, a.y, a.r + progress * 52, 0, Math.PI * 2)
-            ctx.strokeStyle = `rgba(${rgb(a.color)},${(1 - progress) * 0.056})`
+            ctx.strokeStyle = `rgba(${rgb(a.color)},${(1 - progress) * 0.04})`
             ctx.lineWidth = 0.9
             ctx.stroke()
           }
         }
 
         const nodeAlpha = nearMouse
-          ? 0.85
-          : a.color === 'dark' ? (a.isHub ? 0.18 : 0.11)
-          : (a.isHub ? 0.22 : 0.15)
+          ? 0.5
+          : a.color === 'dark' ? (a.isHub ? 0.14 : 0.08)
+          : (a.isHub ? 0.17 : 0.11)
 
         ctx.beginPath()
-        ctx.arc(a.x, a.y, nearMouse ? a.r * 1.45 : a.r, 0, Math.PI * 2)
+        ctx.arc(a.x, a.y, nearMouse ? a.r * 1.25 : a.r, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(${nearMouse ? '143,199,0' : rgb(a.color)},${nodeAlpha})`
         ctx.fill()
       }
@@ -203,13 +203,18 @@ export default function ParticleCanvas() {
 
     const onMouseMove = (e: MouseEvent) => { mouse.x = e.clientX; mouse.y = e.clientY }
     const onMouseLeave = () => { mouse.x = -9999; mouse.y = -9999 }
-    const onScroll = () => { scrollY = window.scrollY }
+    const onScroll = () => {
+      scrollY = window.scrollY
+      // Fade the whole field out over the first viewport so sections below sit on plain paper
+      canvas.style.opacity = String(Math.max(0, 1 - scrollY / (H * 0.9)))
+    }
 
     window.addEventListener('resize', resize)
     window.addEventListener('mousemove', onMouseMove)
     window.addEventListener('scroll', onScroll, { passive: true })
     document.addEventListener('mouseleave', onMouseLeave)
     resize()
+    onScroll()
     draw()
 
     return () => {

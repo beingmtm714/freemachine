@@ -40,7 +40,7 @@
 }
 .links a {
   font-size: 0.75rem;
-  color: rgba(247, 246, 240, 0.4);
+  color: rgba(247, 246, 240, 0.6);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -48,7 +48,7 @@
 
 .copy {
   font-size: 0.7rem;
-  color: rgba(247, 246, 240, 0.3);
+  color: rgba(247, 246, 240, 0.5);
   text-align: right;
 }
 

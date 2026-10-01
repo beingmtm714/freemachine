@@ -5,14 +5,17 @@
 
   --ink:       #1c1c1c;
   --ink-soft:  #333333;
-  --ink-dim:   rgba(28, 28, 28, 0.68);
+  --ink-dim:  rgba(28, 28, 28, 0.78);
 
   --acid:      #8fc700;
   --acid-dim:  rgba(143, 199, 0, 0.20);
+  --acid-text: #5f8a00;
 
   --node-a:    #5500cc;
   --node-b:    #8fc700;
   --node-c:    #1c1c1c;
+
+  --paper-dim: rgba(247, 246, 240, 0.74);
 
   --nav-bg:    rgba(247, 246, 240, 0.92);
 
