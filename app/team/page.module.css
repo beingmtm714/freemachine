@@ -11,7 +11,7 @@
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--acid);
+  color: var(--acid-text);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -71,7 +71,7 @@
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--acid);
+  color: var(--acid-text);
 }
 
 .bioText {
@@ -160,7 +160,7 @@
 }
 
 .advisorRole {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   line-height: 1.55;
   color: var(--ink-dim);
 }
