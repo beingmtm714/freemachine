@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import Arrow from '@/components/Arrow'
 import ParticleCanvas from '@/components/ParticleCanvas'
 import NamedNodes from '@/components/NamedNodes'
 import styles from './page.module.css'
@@ -105,7 +106,7 @@ export default function Home() {
               <div className={styles.quoteAttr}>— Emily, participant</div>
             </div>
             <Link href="/programs" className={styles.programCta}>
-              See how it works ↗
+              See how it works <Arrow className={styles.ctaArrow} />
             </Link>
           </div>
           <div>
@@ -158,7 +159,7 @@ export default function Home() {
               Free Machine&apos;s Public Option for AI — Americans don&apos;t
               have to be beholden to the tech Goliaths.
             </div>
-            <div className={styles.pressArrow}>↗</div>
+            <div className={styles.pressArrow}><Arrow size={16} /></div>
           </a>
           <a
             href="https://news.asu.edu/20211118-engaging-public-science-and-technology-studies"
@@ -171,7 +172,7 @@ export default function Home() {
               Future Perfect awarded special commendation — bridging theory and
               practice in science &amp; technology studies.
             </div>
-            <div className={styles.pressArrow}>↗</div>
+            <div className={styles.pressArrow}><Arrow size={16} /></div>
           </a>
           <a
             href="https://4sonline.org/2022_multiple__winners.php"
@@ -184,7 +185,7 @@ export default function Home() {
               Do Graphics Processing Units Have Politics? — Ben Gansky&apos;s
               multi-media performance lecture recognized.
             </div>
-            <div className={styles.pressArrow}>↗</div>
+            <div className={styles.pressArrow}><Arrow size={16} /></div>
           </a>
         </div>
       </section>
