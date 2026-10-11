@@ -227,6 +227,13 @@
   transition: color 0.2s;
 }
 .programCta:hover { color: var(--acid); }
+.ctaArrow {
+  display: inline-block;
+  vertical-align: -1px;
+  margin-left: 0.4rem;
+  transition: transform 0.2s;
+}
+.programCta:hover .ctaArrow { transform: translate(2px, -2px); }
 
 .futuresGrid {
   display: grid;
@@ -316,7 +323,8 @@
 
 .pressArrow {
   color: var(--ink-dim);
-  font-size: 1rem;
+  display: flex;
+  align-items: center;
   transition: transform 0.2s, color 0.2s;
 }
 .pressRow:hover .pressArrow {

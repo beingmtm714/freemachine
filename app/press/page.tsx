@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import Arrow from '@/components/Arrow'
 import ParticleCanvas from '@/components/ParticleCanvas'
 import styles from './page.module.css'
 
@@ -53,7 +54,7 @@ export default function Press() {
               <div className={styles.rowHeadline}>{headline}</div>
               <div className={styles.dek}>{dek}</div>
             </div>
-            <div className={styles.arrow}>↗</div>
+            <div className={styles.arrow}><Arrow size={16} /></div>
           </a>
         ))}
       </section>

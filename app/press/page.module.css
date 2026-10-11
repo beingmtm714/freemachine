@@ -79,7 +79,8 @@
 
 .arrow {
   color: var(--ink-dim);
-  font-size: 1rem;
+  display: flex;
+  align-items: center;
   transition: transform 0.2s, color 0.2s;
   padding-top: 0.2rem;
 }
